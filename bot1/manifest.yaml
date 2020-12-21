@@ -1,0 +1,8 @@
+# Built-in Sonrai Bot: srn:supersonrai::bot/64ba7cbb-1c57-4a6e-ae41-d647ea49a9eb
+version: 2020-07-10
+type: Remediation
+title: Delete iam policy
+cloud: AWS
+operation: EXECUTE_PYTHON_SCRIPT
+authorName: Sonrai Security
+authorEmail: info@sonraisecurity.com
