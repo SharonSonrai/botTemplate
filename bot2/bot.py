@@ -13,14 +13,19 @@ def run(ctx):
     #Get bucket name
     splited_resource = resource_id.split(":::")
     bucket_name = splited_resource[1]
-    logging.info('Creating bucket: {}-auditdata'.format(bucket_name))
-    s3.create_bucket(Bucket="{}-auditdata".format(bucket_name))
 
+    #Create a buck for logging
+    logging.info('Creating bucket: {}-audit-data'.format(bucket_name))
+    s3.create_bucket(Bucket="{}-audit-data".format(bucket_name))
+
+    #Store all the logging in the new bucket
     logging.info('Logging bucket: {}'.format(bucket_name))
     bucket_logging = s3_resource.BucketLogging(bucket_name)
     bucket_logging.put(
                     BucketLoggingStatus={
                         'LoggingEnabled': {
-                            'TargetBucket': "{}-auditdata".format(bucket_name),'TargetPrefix': f'{bucket_name}/'
-
-                        }})
+                            'TargetBucket': "{}-audit-data".format(bucket_name),
+                            'TargetPrefix': f'{bucket_name}/'
+                        }
+                    }
+    )
