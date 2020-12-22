@@ -21,5 +21,6 @@ def run(ctx):
     bucket_logging.put(
                     BucketLoggingStatus={
                         'LoggingEnabled': {
-                            'TargetBucket': "{}-auditdata".format(bucket_name)
+                            'TargetBucket': "{}-auditdata".format(bucket_name),'TargetPrefix': f'{bucket_name}/'
+
                         }})
