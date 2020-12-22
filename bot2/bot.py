@@ -13,5 +13,11 @@ def run(ctx):
     logging.info('Creating bucket: {}-auditdata'.format(bucket_name))
     s3.create_bucket(Bucket="{}-auditdata".format(bucket_name))
 
-    logging.info('Logging bucket: {}-auditdata'.format(bucket_name))
-    s3.BucketLogging(Bucket="{}-auditdata".format(bucket_name))
+
+    logging.info('Logging bucket: {}'.format(bucket_name))
+    bucket_logging = s3.BucketLogging(Bucket=bucket_name)
+    bucket_logging.put(
+                    BucketLoggingStatus={
+                        'LoggingEnabled': {
+                            'TargetBucket': "{}-auditdata".format(bucket_name)
+                        }})
