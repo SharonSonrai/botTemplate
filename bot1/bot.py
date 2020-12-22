@@ -5,6 +5,7 @@ def run(ctx):
 
     iam_client = ctx.get_client().get('iam')
 
+    logging.info('iam client {}'.format(iam_client))
     # Get policy arn
     resource_arn = sonrai.platform.aws.arn.parse(ctx.resource_id)
     policy_arn = resource_arn \
