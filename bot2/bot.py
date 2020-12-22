@@ -1,11 +1,10 @@
 import logging
-import boto3
 
 
 def run(ctx):
 
     s3 = ctx.get_client().get('s3')
-    s3_resource = boto3.resource('s3')
+    s3_resource = client = ctx.get_client().resource('s3')
 
     # Get reource id name
     resource_id = ctx.resource_id
